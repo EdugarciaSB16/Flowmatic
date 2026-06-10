@@ -21,8 +21,9 @@ describe('AppModule (e2e)', () => {
       .get('/health')
       .expect(200)
       .expect((response) => {
-        expect(response.body.status).toBe('ok');
-        expect(response.body.service).toBe('auth-service');
+        const body = response.body as { status: string; service: string };
+        expect(body.status).toBe('ok');
+        expect(body.service).toBe('auth-service');
       });
   });
 
